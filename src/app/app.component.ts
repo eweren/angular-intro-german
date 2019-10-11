@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {StorageBackendService} from 'src/backend/storage-backend.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular Intro';
+
+  constructor(private storageBackendService: StorageBackendService) {
+    this.storageBackendService.getNotes().then(notes => {
+      console.log('notes: ', notes);
+    });
+  }
 }

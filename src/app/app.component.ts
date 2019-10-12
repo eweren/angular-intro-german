@@ -8,6 +8,12 @@ import {CustomHttpClient} from './../backend/custom-http-client.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  /**
+   * Wie du siehst, ist der title in der app.component.html angegeben.
+   * Wenn eine public variable (title === public title) in einer HTML dargestellt werden soll,
+   * geschieht das über die geschweiften Klammern {{ title }}.
+   * Damit weiß Angular, dass das innere ein Aufruf ist.
+   */
   title = 'Angular Intro';
   constructor(/** Unser 'gemockter' httpClient */ private httpClient: CustomHttpClient) {}
 

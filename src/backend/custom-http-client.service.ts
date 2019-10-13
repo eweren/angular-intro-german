@@ -66,7 +66,7 @@ export class CustomHttpClient {
     /**
      * Workaround da durch den spreadOperator unser übergebenes Array nicht aufgelöst wird.
      */
-    const arrayToAdd = [].concat(items);
+    const arrayToAdd = [].concat(...items);
     this.storage.set(path, JSON.stringify(arrayToAdd));
     await delay(500);
     const status = {status: 200};

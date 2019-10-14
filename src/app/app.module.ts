@@ -18,6 +18,7 @@ import {StorageServiceModule} from 'angular-webstorage-service';
     MarkdownModule.forRoot({loader: HttpClient}),
     StorageServiceModule
   ],
+  entryComponents: [],
   providers: [],
   bootstrap: [AppComponent]
 })

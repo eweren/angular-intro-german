@@ -160,8 +160,49 @@ Im **_src_** Ordner befinden sich die richtig wichtigen Dateien.
 
 **_test.ts_** ist essenziell für Karma und lädt alle zu karma gehörenden Dateien (Dateien die auf `.spec.ts` enden)
 
-<!--- ## Lektion 2 - Die Angular App
+- ## Lektion 2 - Die Angular App
 
 In dieser Lektion wird du lernen, wie eine Komponente aufgebaut wird, wie sie sich von Modulen unterscheidet und was Routing ist.
 
-### -->
+### Module
+
+Module sind die Knotenpunkte einer Angular-App. Sie bündeln Pakete von außen, um diese für die inneren Komponenten nutzbar zu machen und exportieren innere Komponenten, um diese für äußere Module, die jenes Modul importieren, nutzbar zu machen.
+
+#### declarations
+
+Möchtest du also eine Komponente entwickeln, dann führt kein Weg daran vorbei, diese auch in einer Angular App zu deklarieren.
+So ist beispielsweise in der **_app.module.ts_** zu Beginn:
+
+> declarations: [AppComponent]
+
+die `AppComponent` deklariert. Sie ist demnach nun Angular bekannt und wird vom Compiler erfasst und verarbeitet.
+
+Diesen Schritt musst du für jede Komponente machen. In der Regel suchst du dir dafür das im Baum nächstliegendste Modul und fügst deine Komponenten-Klasse hinzu.
+
+#### imports
+
+Wie bereits angesprochen enthält der `imports`-Array nahezu alle Abhängigkeiten, die von den dort deklarierten Komponenten, aber auch teilweise den untergeordneten Modulen genutzt werden.
+
+Beispielsweise wurde das `StorageServiceModule` in der **_app.module.ts_** importiert, damit in der **_custom-http-client.service.ts_** der `WebStorageService` genutzt werden kann.
+
+Normalerweise wirken diese Imports nur für Kind-Komponenten des entprechenden Moduls. Das `AppModule` hat allerdings die Besonderheit, dass die dort importierten Pakete global verfügbar sind.
+
+#### entryComponents
+
+Entry components sind all jene Komponenten, die nicht ausschließlich per _selector_ in die App eingebunden werden, sondern dynamisch in die Seiten geladen werden. Hierfür erstellt Angular dann jeweils eine Factory, die die Komponente dynamisch zu jeder Zeit über den ViewContainerRef einbinden kann.
+
+#### providers
+
+Der Providers-Array enthält Services, die für die Komponenten zu Verfügung stehen sollen. Die dort angegebenen Services können von allen Kindkomponenten injected, also eingebunden werden.
+
+Oft werden die benötigten Services bereits über die Module eingebunden.
+
+### Komponenten
+
+Komponenten sind in der Angular-Welt alle UI-Pakete. Sie sind Kernstück der Anwendung und haben primär den Zweck, eine Wiederverwendung und Vereinheitlichung zu schaffen.
+
+Angenommen wir bauen eine App, in der User miteinander chatten können, so wäre das Profilbild, eine Chat-Blase und die Optionen Komponenten, die ganz oft angezeigt, aber nur ein mal programmiert wurden.
+
+Komponenten sind aber nicht nur die wiederverwendbaren Elemente. Auch einzelne _Seiten_ der Anwendung sind Komponenten, die viele kleinere, wieder in sich geschachtelte Komponenten enthalten können.
+
+#### Aufbau

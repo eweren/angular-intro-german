@@ -1,1 +1,1 @@
-# README can be found under src/asses/README.md
+### README can be found under src/assets/README.md

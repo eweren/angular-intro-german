@@ -1,7 +1,3 @@
-# angular-intro-german
-
-Dieses Repo enthält eine absolut rudimentäre Angular App, diverse Aufgabenstellung und Erklärungen, um neuen Entwicklern im Umfeld von Angular den Einstieg zu vereinfachen
-
 ## Aufbau
 
 Der Aufbau dieses Projekts richtet sich nach den Lektionen. Die Lektionen starten bei einem Schwierigkeitsgrad, der für absolute Anfänger geeignet ist und steigert sich dann, bis der Schüler auch `async/await`, `Observables` und das `Facade Design Pattern` versteht.
@@ -206,3 +202,37 @@ Angenommen wir bauen eine App, in der User miteinander chatten können, so wäre
 Komponenten sind aber nicht nur die wiederverwendbaren Elemente. Auch einzelne _Seiten_ der Anwendung sind Komponenten, die viele kleinere, wieder in sich geschachtelte Komponenten enthalten können.
 
 #### Aufbau
+
+Komponenten sind definiert als normale JavaScript-Klassen mit dem @Component decorator. Dieser Decorator sagt der Anwendung, dass es sich bei der folgenden Klasse um eine Komponente handelt.
+
+Bei der "Deklaration" als Komponente, können Optionen mitgegeben werden. Im Fall der **_app.componten.ts_** ist das:
+
+> selector: 'app-root',
+> templateUrl: './app.component.html',
+> styleUrls: ['./app.component.scss']
+
+Der `selector` ist der string, über den eine Komponente (sofern richtig im Modul importiert/deklariert) in eine andere Komponente geladen wird. Angewendet würde das bei der genannten Komponente irgendwo in einer HTML so aussehen:
+
+> <app-root></app-root>
+
+Die Option `templateUrl` definiert, welche Datei als Template für diese Komponente genommen werden soll. Als Alternative könnte man auch nur `template` angeben und einen string innerhalb von _backticks_ (`) als Template verwenden.
+
+Die Option `styleUrls` erwartet ein Array mit dem Pfad zu den zu nutzenden (in diesem Fall) scss-Dateien, die das Styling bestimmen.
+Auch hier gibt es wieder die Alternative, einfach nur `styles` anzugeben und dahinter die Styles innerhalb von Backticks anzugeben.
+
+Weitere wichtige Optionen, die allerdings nicht allzu wichtig zu Beginn sind, wären:
+
+- changeDetection: Gibt an, welche Strategie der Änderungserkennung genommen werden soll: [OnPush: wenn InputVariablen oder Observables innerhalb der Komponente geändert werden] oder [default: immer, wenn irgendwo in der App eine Änderung passiert]
+
+- animations: Hierüber können AngularAnimations importiert werden
+
+- encapsulation: Gibt an, wie die Styles behandelt werden. Bei `ViewEncapsulation.None` wird der Code aus der angebenenen scss-Datei für alle Dateien im Projekt verwendet. Bei `ViewEncapsulation.Emulated` werden die dort angegebenen Styles ausschließlich für diese Komponente verwendet.
+
+In der Regel enthält eine Komponente einen Konstruktor, in dem abhängige Services und evtl. andere Parameter eingebunden werden. Im Falle unserer **_app.component.ts_** wäre das der CustomHttpClient, der der Variable httpClient innerhalb dieser Komponente zugeordnet wird.
+
+Innerhalb eines Konstruktors ist ein Scope für die angegebenen Parameter Pflicht. `private` lässt jede Funktion innerhalb der Klasse auf den Service/Parameter zugreifen. `public` lässt auch von der HTML aus oder noch weiter darauf zugreifen. Kein Scope definiert nur eine Verfügbarkeit innerhalb des Konstruktors.
+
+Eine Komponente kann von anderen Komponenten erben, oder diese Erweitern/Implementieren.
+
+Die `AppComponent`beispielsweise implementiert `OnInit` und muss daher die **Schnittstelle** `ngOnInit()` implementieren. Diese Funktion wird beim Initialisieren der Komponente aufgerufen. Es gibt viele Schnittstellen, die Angular dem Entwickler an die Hand gibt, um Aufgaben an verschiedenen LifeCycleHooks auszuführen.
+Andere oft gebrauchte sind `OnDestroy` on `AfterViewInit`.

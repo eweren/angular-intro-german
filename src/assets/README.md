@@ -4,6 +4,26 @@ Der Aufbau dieses Projekts richtet sich nach den Lektionen. Die Lektionen starte
 
 # Lektionen
 
+- [Lektion 1 - Aufbau](#lektion-1---aufbau)
+  - [Root](#root)
+  - [.gitignore](#.gitignore)
+  - [angular.json](#angular.json)
+  - [package-lock.json](#package-lock.json)
+  - [package.json](#package.json)
+  - [README.md](#README.md)
+  - [tsconfig.json](#tsconfig.json)
+  - [tslint.json](#tslint.json)
+  - [src](#src)
+- [Lektion 2 - Die Angular App](#lektion-2---die-angular-app)
+  - [Module](#Module)
+  - [declarations](#declarations)
+  - [imports](#imports)
+  - [entryComponents](#entryComponents)
+  - [providers](#providers)
+  - [Komponenten](#Komponenten)
+  - [Aufbau](#Aufbau)
+- [Lektion 3 - TypeScript](#lektion-3---typescript)
+
 ## Lektion 1 - Aufbau
 
 Angular Projekte sind zum Start immer gleich aufgebaut. Es werden einige Dateien, auf die im Folgenden eingegangen wird, direkt im Hauptverzeichnis angelegt. Im **_src_**-Order findet sich der Quellcode der Anwendung, Medien (**_assets_**), Umgebungsvariablen (**_environments_**) und diverse andere Dateien.
@@ -236,3 +256,51 @@ Eine Komponente kann von anderen Komponenten erben, oder diese Erweitern/Impleme
 
 Die `AppComponent`beispielsweise implementiert `OnInit` und muss daher die **Schnittstelle** `ngOnInit()` implementieren. Diese Funktion wird beim Initialisieren der Komponente aufgerufen. Es gibt viele Schnittstellen, die Angular dem Entwickler an die Hand gibt, um Aufgaben an verschiedenen LifeCycleHooks auszuführen.
 Andere oft gebrauchte sind `OnDestroy` on `AfterViewInit`.
+
+## Lektion 3 - Typescript
+
+TypeScript ist die Programmiersprache, die für die Logik der Angular-App zuständig ist. Im Vergleich zu JavaScript - der Programmiersprache zu der TypeScript ein Superset ist und compiliert wird - bietet TypeScript einige Vorteile.
+
+Der wichtigste Unterschied zwischen TypeScript und JavaScript ist, dass TypeScript starke Typisierung bietet. Während in JavaScript jede Variable zur Laufzeit ihren Typ ändern kann, können in TypeScript Variablen (sofern nicht als any deklariert) nicht einen neuen Typ annehmen.
+
+Dennoch teilen sich beide Sprachen viele Konzepte. Alles was JavaScript (abhängig von der ECMAScript Version) kann, kann auch TypeScript (der mindestens gleichen ECMAScript Version).
+
+### Primitive Datentypen
+
+TypeScript gibt dem Nutzer folgende primitive Datentypen an die Hand:
+
+- Object - Ein Object ist ein formatiert wie ein JSON-Objekt.
+  Die `properties` stehen innerhalb geschweifter Klammern und sind als `key-value`-Paare angegeben. Beispiel:
+
+```javascript
+let user = {
+  firstname: 'Max',
+  lastname: 'Mustermann',
+  address: {
+    street: 'Musterstraße 1',
+    city: 'Musterstadt',
+    zip: '12345'
+  }
+};
+```
+
+- String - Ein String ist eine Abfolge von Zeichen (Beispielsweise Sätze oder Wörter). Anders als beispielsweise in Java gibt es nicht auch noch den Typ `char`. Strings lassen sich leicht manipulieren. Einige der häufigsten Methoden, die auf einem String ausgefphrt werden sind im Folgenden dargestellt:
+
+```javascript
+let message = 'This is a simple string        ';
+console.log(message.substr(0, 4)); // Gibt einen Teil des Strings zurück. Geht dabei vom index (erster Parameter) aus und nimmt die nächsten x (zweiter Paramter) Zeichen. Ergebnis hier: 'This'
+
+console.log(message.trim()); // Entfernt vorangestellte oder nachgestellte Leerzeichen aus einem String. Ergebnis hier: 'This is a simple string'
+
+console.log(message.split('i')); // Gibt ein Array zurück bestehend aus den Strings, die durch Auftrennen des Originalstrings mit dem Seperator (hier i) entstehen. Ergebnis hier: ['Th', 's ', 's a s', 'mple str', 'ng       '];
+```
+
+- Number
+- Boolean
+- Array
+- Null/Undefined
+- Void
+- Any
+- Enum
+- Never
+- Tuple

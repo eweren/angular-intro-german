@@ -32,6 +32,8 @@ export class CustomHttpClient {
      * der Wert nach dem '||' der Variable zugeordet wird
      */
     const preValue = JSON.parse(this.storage.get(path)) || [];
+    const yy = 'has';
+    yy.spl;
 
     /**
      * Mit 'Array.concat(Array2)' kann ein Array erweitert werden.

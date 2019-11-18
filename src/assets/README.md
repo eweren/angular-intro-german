@@ -295,9 +295,23 @@ console.log(message.trim()); // Entfernt vorangestellte oder nachgestellte Leerz
 console.log(message.split('i')); // Gibt ein Array zurück bestehend aus den Strings, die durch Auftrennen des Originalstrings mit dem Seperator (hier i) entstehen. Ergebnis hier: ['Th', 's ', 's a s', 'mple str', 'ng       '];
 ```
 
-- Number
-- Boolean
-- Array
+- Number - Eine Variable vom Typ `number` enthält Zahlen jeder Art. Diese können sowohl "einfache" `Integer` (ganzzahlige Werte), als auch `Floats` sein. Mit ihnen lassen sich Rechenoperationen jeglicher Art durchführen.
+- Boolean - Boolsche Werte sind als binärer Typ zu verstehen. Sie nehmen entweder `True` oder `False` an.
+- Array - Ein Array ist eine Liste von Objekten eines beliebigen Typs. Sie können in ihren enthaltenen Werten _eingeschränkt_ werden und bieten eine Reihe von Methoden, die die enthaltene Liste manipulieren. Im Folgenden das Wichtigste:
+```javascript
+let stringArray: Array<string> = ['String1', 'Str2']; // Alternativ kann auch : [string] als Schreibweise für die Typdefinition genutzt werden.
+// .length gibt die Länge eines Arrays zurück.
+console.log(stringArray.length);
+// Ergebnis: 2
+
+// Der Zugriff auf die Werte in dem Array erfolgt über die Syntax array[index] (Wichtig: Der index startet bei 0)
+console.log(stringArray[0]);
+// Ergebnis: 'String1'
+
+// .sort(sortFnct) sortiert die Werte innerhalb eines Arrays um und gibt das sortierte Array zurück.
+console.log(stringArray.sort((a, b) => a.length - b.length));
+// Ergebnis: ['Str2', 'String1]
+```
 - Null/Undefined
 - Void
 - Any

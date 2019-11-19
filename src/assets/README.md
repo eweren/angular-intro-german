@@ -23,6 +23,7 @@ Der Aufbau dieses Projekts richtet sich nach den Lektionen. Die Lektionen starte
   - [Komponenten](#Komponenten)
   - [Aufbau](#Aufbau)
 - [Lektion 3 - TypeScript](#lektion-3---typescript)
+  - [Datentypen](#Primitive-Datentypen)
 
 ## Lektion 1 - Aufbau
 
@@ -299,7 +300,7 @@ console.log(message.split('i')); // Gibt ein Array zurück bestehend aus den Str
 - Boolean - Boolsche Werte sind als binärer Typ zu verstehen. Sie nehmen entweder `True` oder `False` an.
 - Array - Ein Array ist eine Liste von Objekten eines beliebigen Typs. Sie können in ihren enthaltenen Werten _eingeschränkt_ werden und bieten eine Reihe von Methoden, die die enthaltene Liste manipulieren. Im Folgenden das Wichtigste:
 ```javascript
-let stringArray: Array<string> = ['String1', 'Str2']; // Alternativ kann auch : [string] als Schreibweise für die Typdefinition genutzt werden.
+const stringArray: Array<string> = ['String1', 'Str2']; // Alternativ kann auch : [string] als Schreibweise für die Typdefinition genutzt werden.
 // .length gibt die Länge eines Arrays zurück.
 console.log(stringArray.length);
 // Ergebnis: 2
@@ -311,7 +312,19 @@ console.log(stringArray[0]);
 // .sort(sortFnct) sortiert die Werte innerhalb eines Arrays um und gibt das sortierte Array zurück.
 console.log(stringArray.sort((a, b) => a.length - b.length));
 // Ergebnis: ['Str2', 'String1]
+
+// .concat(zweitesArray) fügt die beiden beteiligten Arrays zusammen.
+console.log(stringArray.concat(stringArray));
+// Ergebnis: ['Str2', 'String1', 'Str2', 'String1']
+
+// .slice(startIndex, endIndex) extracts a section of an array and returns that. Can also be used for copying an array.
+console.log(stringArray.slice(0, 1));
+// Ergebnis: ['Str2']
+console.log(stringArray.slice());
+// Ergebnis: ['Str2', 'String1]
 ```
+Für weitere Funktionen, die Arrays bieten, bietet [diese Seite](https://www.tutorialspoint.com/typescript/typescript_arrays.htm) einen sehr guten Überblick.
+
 - Null/Undefined
 - Void
 - Any

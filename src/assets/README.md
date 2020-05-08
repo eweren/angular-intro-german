@@ -226,7 +226,7 @@ Komponenten sind aber nicht nur die wiederverwendbaren Elemente. Auch einzelne _
 
 Komponenten sind definiert als normale JavaScript-Klassen mit dem @Component decorator. Dieser Decorator sagt der Anwendung, dass es sich bei der folgenden Klasse um eine Komponente handelt.
 
-Bei der "Deklaration" als Komponente, können Optionen mitgegeben werden. Im Fall der **_app.componten.ts_** ist das:
+Bei der "Deklaration" als Komponente, können Optionen mitgegeben werden. Im Fall der **_app.component.ts_** ist das:
 
 > selector: 'app-root',
 > templateUrl: './app.component.html',

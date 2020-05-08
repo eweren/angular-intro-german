@@ -29,11 +29,9 @@ export class CustomHttpClient {
     /**
      * Die syntax 'var = xy || []' gibt an,
      * dass wenn der erste Wert vor dem '||' null oder undefined ist,
-     * der Wert nach dem '||' der Variable zugeordet wird
+     * der Wert nach dem '||' der Variablen zugeordet wird.
      */
     const preValue = JSON.parse(this.storage.get(path)) || [];
-    const yy = 'has';
-    yy.spl;
 
     /**
      * Mit 'Array.concat(Array2)' kann ein Array erweitert werden.
